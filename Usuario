@@ -1,0 +1,77 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class Usuario extends Pessoa  {
+    private String telefone;
+    private String cpf;
+    private List<String> listaDeLivros;
+
+    public Usuario(int id, String nome, String email, String senha, String telefone, String cpf) {
+        super(id, nome, email, senha);
+        this.telefone = telefone;
+        this.cpf=cpf;
+        this.listaDeLivros = new ArrayList<>();
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+    public String getCpf(){
+        return cpf;
+    }
+    public void setCpf(String cpf){
+        if(!this.cpf.isEmpty()) {
+            this.cpf=cpf;
+        }
+    }
+
+    public void setTelefone(String telefone) {
+        if (telefone != null && !telefone.isEmpty())
+            this.telefone = telefone;
+    }
+
+    public List<String> getListaDeLivros() {
+        return listaDeLivros;
+    }
+
+    public void emprestarLivro(String titulo) {
+        if (titulo != null && !titulo.isEmpty() && !listaDeLivros.contains(titulo)) {
+            listaDeLivros.add(titulo);
+            System.out.println("Livro \"" + titulo + "\" emprestado com sucesso.");
+        } else {
+            System.out.println("Não foi possível emprestar o livro: título inválido ou já emprestado.");
+        }
+    }
+
+    public void devolverLivro(String tituloLivro) {
+        if (tituloLivro != null && listaDeLivros.contains(tituloLivro)) {
+            listaDeLivros.remove(tituloLivro);
+            System.out.println("Livro \"" + tituloLivro + "\" devolvido com sucesso.");
+        } else {
+            System.out.println("Não foi possível devolver o livro: título não encontrado na lista de empréstimos.");
+        }
+    }
+
+    public void verificarConta() {
+        System.out.println("Nome: " + getNome());
+        System.out.println("Email: " + getEmail());
+        System.out.println("Telefone: " + getTelefone());
+        System.out.println("Livros emprestados: " + getListaDeLivros());
+    }
+
+    @Override
+    public void entradaDados(Scanner sc) {
+        super.entradaDados(sc);
+        System.out.print("Telefone: ");
+        setTelefone(sc.nextLine());
+    }
+
+    @Override
+    public boolean autenticar(String email, String senha) {
+        return this.email.equals(email) && this.senha.equals(senha);
+    }
+
+
+}
