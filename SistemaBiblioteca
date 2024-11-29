@@ -112,7 +112,7 @@ public class SistemaBiblioteca {
             System.out.println("1. Adicionar Livro");
             System.out.println("2. Buscar Livro");
             System.out.println("3. Emprestar Livro para Usuário");
-            System.out.println("4. Adicionar novo Usuário");  // Corrigido o ponto e vírgula aqui
+            System.out.println("4. Adicionar novo Usuário");  
             System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -135,7 +135,7 @@ public class SistemaBiblioteca {
                     bibliotecario.adicionarUsuario(usuarios, scanner, validador);
                     break;
                 case 5:
-                    return;  // Sai do menu
+                    return;  
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
